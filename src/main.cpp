@@ -1,10 +1,24 @@
 #include <iostream>
-#include "my_node.h"
+#include <vector>
+#include "My_Node.h"
+
 using namespace std;
+
+void RunTest()
+{
+    My_Node a(3.14);
+
+    a.printDebug();
+}
 
 int main()
 {
-    cout << "test\n";
+    RunTest();
+
+    vector<My_Node> nodes;
+
+    
+
     return 0;
 }
 
