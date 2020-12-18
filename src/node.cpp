@@ -216,7 +216,7 @@ void Node::process_message(Message iMessage)
     {
         if (iMessage._value == _uid)
         {
-            atomic_log("Node [ " << _uid << " ] self-declared leader." << endl);
+            atomic_log("\nNode [ " << _uid << " ]\tself-declared leader.\n" << endl);
             Message m(_uid, "elected", _uid);
             transmit_message(m);
             _leader.set_value(_uid);
@@ -224,7 +224,7 @@ void Node::process_message(Message iMessage)
         }
         else if (iMessage._value > _uid)
         {
-            atomic_log("Node [ " << _uid << " ] foward the message ." << iMessage._value << endl);
+            atomic_log("Node [ " << _uid << " ]\tfoward the message with value: " << iMessage._value << endl);
             Message m(_uid, "election-message", iMessage._value);
             transmit_message(m);
 
@@ -233,7 +233,7 @@ void Node::process_message(Message iMessage)
         /* if the node is not yet a leader, or in transit mode re-send the base messages */
         else // if (iMessage._value < _uid)
         {
-            atomic_log("Node [ " << _uid << " ] join as new candidate." << endl);
+            atomic_log("\nNode [ " << _uid << " ]\tjoin as new candidate.\n" << endl);
             Message m(_uid, "election-message", _uid);
             transmit_message(m);
             
@@ -241,7 +241,7 @@ void Node::process_message(Message iMessage)
     }
     if(iMessage._type == "elected")
     {
-        atomic_log("Node [ " << _uid << " ] recognized node [ " << iMessage._value <<  " ] as the leader node." << endl);
+        atomic_log("Node [ " << _uid << " ]\trecognized node [ " << iMessage._value <<  " ]\tas the leader node." << endl);
         Message m(_uid, "elected", iMessage._value );
         transmit_message(m);
         _leader.set_value(iMessage._value);
@@ -269,7 +269,7 @@ void Node::start_node_logic()
 
     if(first)
     {
-        atomic_log("Node [ " << _uid << " ] first candidate." << endl);
+        atomic_log("Node [ " << _uid << " ]\tfirst candidate." << endl);
         
     }
     Message message1;
@@ -321,11 +321,11 @@ unsigned int Node::getPortNumber()
 
 void Node::printDebug()
 {
-    cout << "====================DEBUG LOG====================\n";
-    cout << "UID: \t\t" << _uid;
-    cout << "\nDelay: \t\t" << _delay;
-    cout << "\nPort Number: \t" << _portNumber << endl;
-    cout << "=================================================\n";
+    // cout << "====================DEBUG LOG====================\n";
+    cout << "Node UID: \t\t" << _uid << "\n";
+    // cout << "\nDelay: \t\t" << _delay;
+    // cout << "\nPort Number: \t" << _portNumber << endl;
+    // cout << "=================================================\n";
 }
 
 
