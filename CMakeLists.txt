@@ -10,4 +10,8 @@ include_directories(include)
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES "src/*.cpp")
 
+find_package(Threads)
+
 add_executable(LeaderElectionProblem ${SOURCES})
+
+target_link_libraries(LeaderElectionProblem PRIVATE Threads::Threads)

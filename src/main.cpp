@@ -4,11 +4,11 @@
 #include <string>
 #include "My_Node.h"
 
+#include <thread>
+#include <stdexcept>
+#include <unistd.h>
+
 using namespace std;
-// using std::cout;
-// using std::cin;
-// using std::vector;
-// using std::string;
 
 void RunTest()
 {
@@ -34,7 +34,6 @@ void LoadFromFile(const string iFileName,
             getline(myfile, line);
             float temp = stof(line);
             oValues.push_back(temp);
-            // cout << temp << endl;
         }
 
         myfile.close();
