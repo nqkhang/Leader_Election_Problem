@@ -1,5 +1,11 @@
 #include "My_Node.h"
+#include <iostream>
 #include <time.h>
+
+using std::cout;
+using std::endl;
+using std::string;
+
 
 My_Node::My_Node()
 {
